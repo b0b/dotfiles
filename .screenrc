@@ -1,0 +1,24 @@
+startup_message	off
+vbell off
+defscrollback 512
+shell $SHELL
+shelltitle zsh
+autodetach on
+
+# enable SHIFT-PGUP / SHIFT-PGDOWN scroll
+termcapinfo rxvt ti@:te@
+setenv LC_CTYPE fr_FR.UTF-8
+defutf8 on
+
+bindkey "\033[1;5D" prev
+bindkey "\033[1;5C" next
+
+# startup sessions
+screen -t zsh       zsh
+screen -t chat	    weechat-curses
+screen -t vifm	    vifm
+screen -t music	    ncmpcpp
+select 1
+
+# status
+hardstatus alwayslastline '%{= c} %l %= %{= w}%-w%{+b R}%n*%t%{-b R}%{w}%+w %= '

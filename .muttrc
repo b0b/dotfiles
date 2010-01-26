@@ -1,0 +1,129 @@
+# IMAP {
+set spoolfile = "imaps://imap.gmail.com/INBOX"
+set imap_user = email
+set imap_pass = xxx
+set folder= "imaps://imap.gmail.com/"
+mailboxes =INBOX =UTC
+set move = no
+
+# store message headers locally to speed things up
+set header_cache = "~/.mutt/hcache"
+set record = "+[Gmail]/Messages envoyés"
+set postponed = "+[Gmail]/Brouillons"
+
+# allow mutt to open new imap connection automattically
+set imap_passive = no
+set imap_keepalive = 300
+set mail_check = 120
+# }
+
+# SMTP {
+set smtp_url = email
+set smtp_pass = xxx
+set from = email
+set realname = "Leroux Alexandre"
+set ssl_force_tls = yes
+set ssl_usesystemcerts = yes
+
+alias identity_1 Leroux Alexandre email
+alias identity_2 bOb email
+macro compose v "<edit-from>^Uidentity_<tab>" "Select from"
+# }
+
+# Sort {
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+set imap_check_subscribed
+
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+# }
+
+# Div {
+set reply_to
+set abort_nosubject = no
+set delete=yes
+set fast_reply
+
+# locales FR pour les nom des jours et mois
+set locale=fr_FR.UTF-8
+set charset=utf-8
+set send_charset=utf-8
+
+set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
+set attribution="Le %d, %n a écrit :"
+set forward_format="[Fwd: %s]"
+set forward_quote
+# }
+
+# Color settings for mutt
+# Default color definitions
+color normal     white              default
+color hdrdefault green              default
+color quoted     green              default
+color quoted1    yellow             default
+color quoted2    red                default
+color signature  cyan               default
+color indicator  black              green
+color error      brightred          default
+color status     black               white
+color tree       brightmagenta      default
+color tilde      blue               default
+color attachment brightyellow       default
+color markers    brightred          default
+color message    white              default
+color search     brightwhite        magenta
+color bold       brightyellow       default
+
+# Color definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+mono error     bold
+
+# Colors for items in the reader
+color header brightyellow default "^(From|Subject):"
+color header brightcyan   default ^To:
+color header brightcyan   default ^Cc:
+mono  header bold                 "^(From|Subject):"
+
+# Many of these formulas were stolen from Jeremy Blosser
+# These would be much simpler if colors were additive.
+
+# regular new messages
+color index black white   "~N !~T !~F !~p !~P"
+# regular tagged messages
+color index black cyan    "~T !~F !~p !~P"
+# regular flagged messages
+color index black red     "~F !~p !~P"
+# messages to me
+color index green default "~p !~N !~T !~F !~P"
+color index green white   "~p ~N !~T !~F !~P"
+color index green cyan    "~p ~T !~F !~P"
+color index green red     "~p ~F !~P"
+# messages from me
+color index blue default  "~P !~N !~T !~F"
+color index blue white    "~P ~N !~T !~F"
+color index blue cyan     "~P ~T !~F"
+color index blue red      "~P ~F"
+
+# deleted messages
+color index red default   "!~N ~D"
+color index red white     "~N ~D"
+
+# Highlights inside the body of a message.
+
+# Attribution lines
+color body magenta default "\\* [^<]+ <[^>]+> \\[[^]]+\\]:"
+color body magenta default "(^|[^[:alnum:]])on [a-z0-9 ,]+( at [a-z0-9:,. +-]+)? wrote:"
+
+# PGP messages
+color body brightyellow default "^gpg: Good signature .*"
+color body white        default "^gpg: "
+color body brightwhite  red     "^gpg: BAD signature from.*"
+mono  body bold                 "^gpg: Good signature"
+mono  body bold                 "^gpg: BAD signature from.*"
+
+color body blue default "( *[-+=#*~_]){6,}"

@@ -1,0 +1,37 @@
+# Maximum and minimum number of peers to connect to per torrent.
+# min_peers = 0
+max_peers = 100
+
+# Maximum number of simultanious uploads per torrent.
+max_uploads = 12
+
+# Global upload and download rate in KiB. "0" for unlimited.
+download_rate = 900
+upload_rate = 80
+
+# Default directory to save the downloaded torrents.
+directory = /home/bob/downloads/torrents/
+
+schedule = watch_directory,5,5,load_start=/home/bob/downloads/torrents/url/*.torrent
+
+# Default session directory. Make sure you don't run multiple instance
+# of rtorrent using the same session directory. Perhaps using a
+# relative path?
+session = /home/bob/.session/
+
+# Port range to use for listening.
+port_range = 49164-49164
+ 
+# Check hash for finished torrents. Might be usefull until the bug is
+# fixed that causes lack of diskspace not to be properly reported.
+check_hash = yes
+
+# Encryption options, set to none (default) or any combination of the following:
+# allow_incoming, try_outgoing, require, require_RC4, enable_retry, prefer_plaintext
+#
+# The example value allows incoming encrypted connections, starts unencrypted
+# outgoing connections but retries with encryption if they fail, preferring
+# plaintext to RC4 encryption after the encrypted handshake
+#
+# encryption = allow_incoming,enable_retry,prefer_plaintext
+encryption = allow_incoming,try_outgoing,enable_retry

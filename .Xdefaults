@@ -1,0 +1,59 @@
+*font: xft:Bitstream Vera Sans Mono:pixelsize=13
+*boldFont: xft:Bitstream Vera Sans Mono:pixelsize=13
+
+!URxvt*title: Terminal
+URxvt*scrollBar: false
+URxvt*saveLines: 512
+URxvt*xftAntialias: true
+URxvt*jumpScroll: true
+URxvt*tintColor: white
+URxvt*urgentOnBell: true
+URxvt*internalBorder: 0
+!Le stress say mal
+URxvt*cursorBlink: false 
+URxvt*cursorColor: #ff9900
+URxvt*cursorColor2: #000000
+URxvt*colorBD: #ffffff
+URxvt*colorIT: #bbbbbb
+URxvt*colorUL: #999999
+URxvt*underlineColor: #999999
+URxvt*borderless: true
+!Les liens s'ouvrent dans firefox 
+URxvt*perl-ext-common: default,matcher
+URxvt*matcher.button: 1
+URxvt*urlLauncher: firefox
+!Configure correctement C-Left et C-Right sous rxvt
+URxvt*keysym.C-Left: \033[1;5D
+URxvt*keysym.C-Right: \033[1;5C
+URxvt*keysum.S-Left: \033[d
+URxvt*keysum.S-Right: \033[c
+!delimiters for double-click mouse selection
+URxvt*cutchars: "()*,<>[]{}|'
+
+!Colors
+*background: #202020
+*foreground: light grey
+!black
+*color0:     #222222
+*color8:     #554444
+!red
+*color1:     #EA6868
+*color9:     #FF7272
+!green
+*color2:     #ABCB8D
+*color10:    #bFB01C
+!yellow
+*color3:     #E8AE5B
+*color11:    #FFA75D
+!blue
+*color4:     #71C5F4
+*color12:    #67CDE9
+!magenta
+*color5:     #E2BAF1
+*color13:    #ECAEE9
+!cyan
+*color6:     #21F1EA
+*color14:    #36FFFC
+!white
+*color7:     #F1F1F1
+*color15:    #FFFFFF
