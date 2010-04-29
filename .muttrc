@@ -4,6 +4,7 @@ set imap_user = email
 set imap_pass = xxx
 set folder= "imaps://imap.gmail.com/"
 mailboxes =INBOX =UTC
+set spoolfile="+[Gmail]/Tous les messages"
 set move = no
 
 # store message headers locally to speed things up

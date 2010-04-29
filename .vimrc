@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 
 if has('gui_running')
     set guioptions=haMR
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 13
+    set guifont=Monaco\ 8
     set sessionoptions+=resize
     colorscheme wombat256
 end
@@ -21,7 +21,7 @@ set number
 set wildignore=*.o,*.obj,*.bak,*.exe
 set showmatch "Affiche les paires de parenthèses
 set nostartofline
-"set shortmess=aOstT
+set shortmess=at
 set shell=zsh
 set mouse=a
 set sessionoptions+=buffers,curdir
@@ -76,6 +76,8 @@ set smartcase
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set textwidth=80
+set formatoptions=ta
 "set smartindent
 "set cindent
 
@@ -92,10 +94,10 @@ else
 endif " }}}
 
 " Onglets {{{
-nmap <C-t> :tabnew<CR>
-nmap <C-w> :tabclose<CR>
-nmap <S-Right> :tabnext<CR>
-nmap <S-Left> :tabprevious<CR>
+nmap <A-t> :tabnew<CR>
+nmap <A-w> :tabclose<CR>
+nmap <A-Right> :tabnext<CR>
+nmap <A-Left> :tabprevious<CR>
 set showtabline=2
 " }}}
 
@@ -127,17 +129,21 @@ noremap gd :call OpenPhpManual(expand('<cword>'))<CR>
 " }}}
 
 " Python {{{
-"autocmd FileType python set ft=python.django " For SnipMate
-"autocmd FileType html set ft=html.django_template " For SnipMate
 let python_highlight_numbers = 1
 let python_highlight_exceptions = 1
 " }}}
 
 " Folding {{{
-set foldenable
-set foldmethod=marker
-set foldmarker={,}
-set foldlevel=100
+if has ('folding')
+  set foldenable
+  set foldmethod=marker
+  set foldmarker={{{,}}}
+  set foldcolumn=0
+endif
+"set foldenable
+"set foldmethod=marker
+"set foldmarker={,}
+"set foldlevel=100
 
 " Sauve et charge automatiquement les folds
 autocmd BufWinLeave * if expand("%") != "" | mkview | endif
@@ -164,17 +170,19 @@ map <F3> <CR>:%s/^\(.*\)\n\(\1\n\)*/\1\r/<CR>:nohlsearch<CR>
 nnoremap <F4> :mksession! ~/.vim/sessions/
 nnoremap <F5> :so ~/.vim/sessions/
 
-" ,id insère la date
-imap ,id <C-R>=strftime("%c")<CR>
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
 " }}}
 
 " Plugin {{{
-" Completition
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-
 "Syntastic
 let g:syntastic_enable_signs=1
+
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " }}}

@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("vicious")
+require("revelation")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -66,16 +67,16 @@ end
     vicious.register(datewidget, vicious.widgets.date, "%b %d, %R", 60)
     -- CPU
     cpuwidget = widget({ type = "textbox" })
-    vicious.register(cpuwidget, vicious.widgets.cpu, "$1% $2%", 10)
+    vicious.register(cpuwidget, vicious.widgets.cpu, "$1% $2%", 3)
     -- CPU Frequence
     tzswidget = widget({ type = "textbox" })
-    vicious.register(tzswidget, vicious.widgets.cpuinf, "${cpu0 ghz} ${cpu1 ghz}", 10)
+    vicious.register(tzswidget, vicious.widgets.cpuinf, "${cpu0 ghz} ${cpu1 ghz}", 3)
     -- CPU Temp
     thermalwidget = widget({type = "textbox"})
     vicious.register(thermalwidget, vicious.widgets.thermal, "$1°", 10, "thermal_zone0")
     -- Pacman
     pacmanwidget = widget({ type = "textbox" })
-    vicious.register(pacmanwidget, vicious.widgets.pacman, "$1", 3660)
+    vicious.register(pacmanwidget, vicious.widgets.pkg, "$1", 3660, "Arch")
 
     -- Reusable separators
     local separator = widget({ type = "textbox" })
@@ -197,6 +198,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+
+    awful.key({ modkey }, "e",  revelation.revelation),
 
     awful.key({ modkey,           }, "j",
         function ()

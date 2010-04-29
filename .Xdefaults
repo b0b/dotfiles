@@ -1,5 +1,7 @@
-*font: xft:Bitstream Vera Sans Mono:pixelsize=13
-*boldFont: xft:Bitstream Vera Sans Mono:pixelsize=13
+*font: xft:Monaco:pixelsize=13
+*boldFont: xft:Monaco:pixelsize=13
+!*font: xft:Bitstream Vera Sans Mono:pixelsize=13
+!*boldFont: xft:Bitstream Vera Sans Mono:pixelsize=13
 
 !URxvt*title: Terminal
 URxvt*scrollBar: false
@@ -21,7 +23,7 @@ URxvt*borderless: true
 !Les liens s'ouvrent dans firefox 
 URxvt*perl-ext-common: default,matcher
 URxvt*matcher.button: 1
-URxvt*urlLauncher: firefox
+URxvt*urlLauncher: chromium
 !Configure correctement C-Left et C-Right sous rxvt
 URxvt*keysym.C-Left: \033[1;5D
 URxvt*keysym.C-Right: \033[1;5C

@@ -35,6 +35,8 @@ alias cp='cp -R'
 alias urxvt='urxvtc'
 alias ls='ls --group-directories --color -F'
 alias ll='ls --group-directories --color -lh'
+alias lf='ls *(.)'
+alias lrf='ls **/*(.)'
 alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'
@@ -134,5 +136,5 @@ done
 
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 PR_TITLEBAR=$'%{\e]0;%(!.*ROOT* | .)%n@%m:%~\a%}'
-PROMPT='$PR_BLUE%n$PR_WHITE@$PR_GREEN%m $PR_RED%~$PR_NO_COLOUR '
+PROMPT='$PR_BLUE%n$PR_WHITE@$PR_GREEN%m$PR_WHITE:$PR_RED%/$PR_NO_COLOUR '
 # }}}

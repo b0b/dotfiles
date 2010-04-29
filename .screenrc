@@ -3,7 +3,10 @@ vbell off
 defscrollback 512
 shell $SHELL
 shelltitle zsh
+term rxvt-256color
+
 autodetach on
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 
 # enable SHIFT-PGUP / SHIFT-PGDOWN scroll
 termcapinfo rxvt ti@:te@
@@ -15,9 +18,9 @@ bindkey "\033[1;5C" next
 
 # startup sessions
 screen -t zsh       zsh
-screen -t chat	    weechat-curses
-screen -t vifm	    vifm
-screen -t music	    ncmpcpp
+screen -t chat      weechat-curses
+screen -t vifm      vifm
+screen -t music     ncmpcpp
 select 1
 
 # status
